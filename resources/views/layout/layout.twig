@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+{% set description = "" %}
+{% set keywords = "" %}
+{% set url = "" %}
+
+{% include 'partials.head' %}
+
+<body>
+
+	{% include 'partials.header' %}
+
+	<main>
+		<div class="container">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</main>
+
+	<script type="text/javascript" src="/assets/js/twigstarter-1.0.0.min.js"></script>
+
+	<script type="text/javascript">
+		var $buoop = {vs:{i:8,f:20,o:17,s:6},reminder:0};
+		$buoop.ol = window.onload;
+		window.onload=function(){
+			try {if ($buoop.ol) $buoop.ol();}catch (e) {}
+			var e = document.createElement("script");
+			e.setAttribute("type", "text/javascript");
+			e.setAttribute("src", "//browser-update.org/update.js");
+			document.body.appendChild(e);
+		}
+	</script>
+
+</body>
+</html>

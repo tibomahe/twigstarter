@@ -1,0 +1,90 @@
+<head>
+	<title>Index {{ title }}</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<link rel="canonical" href="{{ url | default('') }}">
+	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="apple-touch-icon" href="appleicon.png">
+
+	<meta name="description" content="{{ description | default('') }}">
+	<meta name="keywords" content="{{ keywords | default('') }}">
+
+	<meta property="og:title" content="{{ title }}">
+	<meta property="og:description" content="{{ description | default('') }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ url | default('') }}">
+	<meta property="og:image" content="">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="{{ url | default('') }}">
+	<meta name="twitter:title" content="{{ title }}">
+	<meta name="twitter:description" content="{{ description | default('') }}">
+	<meta name="twitter:creator" content="">
+	<meta name="twitter:image:src" content="">
+
+	{% if context == 'home' %}
+	<style>
+		/* Insert critical css here (see css/critical/..) */
+	</style>
+
+	<script>
+		/*!
+		loadCSS: load a CSS file asynchronously.
+		[c]2015 @scottjehl, Filament Group, Inc.
+		Licensed MIT
+		*/
+		(function(w){
+			"use strict";
+			w.loadCSS = function( href, before, media ){
+				var ss = w.document.createElement( "link" );
+				var ref;
+				if( before ){
+					ref = before;
+				}
+				else if( w.document.querySelectorAll ){
+					var refs = w.document.querySelectorAll(  "style,link[rel=stylesheet],script" );
+					ref = refs[ refs.length - 1];
+				}
+				else {
+					ref = w.document.getElementsByTagName( "script" )[ 0 ];
+				}
+				var sheets = w.document.styleSheets;
+				ss.rel = "stylesheet";
+				ss.href = href;
+				ss.media = "only x";
+				ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+				ss.onloadcssdefined = function( cb ){
+					var defined;
+					for( var i = 0; i < sheets.length; i++ ){
+						if( sheets[ i ].href && sheets[ i ].href === ss.href ){
+							defined = true;
+						}
+					}
+					if( defined ){
+						cb();
+					} else {
+						setTimeout(function() {
+							ss.onloadcssdefined( cb );
+						});
+					}
+				};
+				ss.onloadcssdefined(function() {
+					ss.media = media || "all";
+				});
+				return ss;
+			};
+		}(this));
+		loadCSS( "assets/css/main.min.css" );
+	</script>
+	{% else %}
+	<link rel="stylesheet" href="/assets/css/main.min.css" charset="utf-8">
+	{% endif %}
+
+	<!--[if lte IE 9 ]>
+		<script type="text/javascript" src="../assets/js/twigstarter-1.0.0-ie-support.min.js"></script>
+	<![endif]-->
+
+</head>

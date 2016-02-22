@@ -1,8 +1,9 @@
-## TwigStarter
+## TwigStarter + Sasserkit
 
-TwigStarter is a small app for Twig integrators.
+[TwigStarter](https://github.com/blaiskillian/twigstarter) is a small app for Twig integrators. It allows them to easily create templates, using the power of Twig.
 
-It allows them to easily create templates, using the power of Twig.
+[Sasserkit](https://github.com/tibomahe/SasserKit) is starter kit for front developpement based on bootstrap and SASS.
+
 
 ### Requirements
 
@@ -15,11 +16,12 @@ It allows them to easily create templates, using the power of Twig.
 - Install dependancies :
 	- Composer : `composer install`
 	- NodeJS : `npm install`
+	- Bower : `bower install
 - Copy the .env-example file to .env, and edit the `BASE_URL` with your own if necessary
 
 ### How To
 
-Just use the `grunt watch` command, and the script will watch your assets files (located in `/resources/assets/`) and run the app with the PHP built-in webserver
+Just use the `grunt` command, and the script will watch your assets files (located in `/resources/assets/`) and run the app with the PHP built-in webserver
 
 ### Usage
 
@@ -50,3 +52,7 @@ This app uses [sabre/http](sabre.io/http/) library, that provides `Request` and 
 To access the `Request` object, use the `request()` function in your code.
 
 Then, using the `view($tpl_name, $data, $status_code)` function, you can send back a `Response` containing the rendered view with the given data. You can also create a custom `Response` instance, look at [Sabre's doc](http://sabre.io/http/sapi/) for more informations.
+
+## Critical CSS
+
+SasserKit uses the grunt contrib for [criticalcss](https://github.com/filamentgroup/grunt-criticalcss). When you launch grunt, it generates critical css files in css/critical/.. that you can copy, paste and inline in the head of your html.

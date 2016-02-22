@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "homepage": "https://github.com/blaiskillian/twigstarter",
   "authors": [
-    "Killian Blais <contact@killianblais.fr>"
+    "Killian Blais <contact@killianblais.fr>",
+    "Thibault MAHE <thibault.mahe@escaledigitale.com>"
   ],
   "license": "MIT",
   "ignore": [
@@ -14,6 +15,10 @@
     "tests"
   ],
   "dependencies": {
-    // Put your dependencies here
+    "bootstrap-sass": "~3.3.3",
+    "jquery": "~2.1.4",
+    "font-awesome": "~4.4.0",
+    "html5shiv": "~3.7.3",
+    "respond": "~1.4.2"
   }
 }

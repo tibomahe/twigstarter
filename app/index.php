@@ -5,4 +5,4 @@ $data = [
 	'text' => $faker->text,
 ];
 
-view('example', $data);
+view('index', $data);
