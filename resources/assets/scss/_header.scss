@@ -2,7 +2,6 @@
 // --------------------------
 
 header {
-	color: red;
 	.skip-nav { // hidden for accessibility
 		ul {
 			@include container;
