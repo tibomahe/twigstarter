@@ -140,7 +140,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: '<%= srcAssets %>/im/',
 					src: ['**/*.{png,jpg,gif}'],
-					dest: '<%= buildAssets %>/im/'
+					dest: '<%= srcAssets %>/im/'
 				}]
 			}
 		},
@@ -149,6 +149,11 @@ module.exports = function(grunt) {
 			main: {
 				files: [
 				{expand: true, cwd: '<%= srcAssets %>/', src: ['fonts/**'], dest: '<%= buildAssets %>'},
+				],
+			},
+			images: {
+				files: [
+				{expand: true, cwd: '<%= srcAssets %>/', src: ['im/**'], dest: '<%= buildAssets %>'},
 				],
 			},
 		},
@@ -194,12 +199,12 @@ module.exports = function(grunt) {
 				tasks: ['sass', 'postcss', 'csso', 'clean']
 			},
 			images: {
-				files: ['<%= srcAssets %>/im/**/*.{png,jpg,gif}'],
-				tasks: ['imagemin']
+				files: ['<%= srcAssets %>/im/*'],
+				tasks: ['imagemin', 'copy:images']
 			},
 			fonts: {
 				files: ['<%= srcAssets %>/fonts/**/*'],
-				tasks: ['copy']
+				tasks: ['copy:main']
 			}
 		},
 
@@ -222,7 +227,7 @@ module.exports = function(grunt) {
 		concurrent: {
 			transform: ['browserify', 'sass'],
 			minify: ['csso', 'uglify'],
-			optim: ['imagemin', 'criticalcss']
+			optim: ['imagemin', 'copy:images', 'criticalcss']
 		},
 
 		clean: {
@@ -237,7 +242,7 @@ module.exports = function(grunt) {
 
 	});
 
-grunt.registerTask('images', ['imagemin']);
+grunt.registerTask('images', ['imagemin', 'copy:images']);
 grunt.registerTask('critical', ['criticalcss']);
 grunt.registerTask('stats', ['csscount']);
 grunt.renameTask( 'watch', 'delta' );
@@ -252,7 +257,7 @@ grunt.registerTask('default', [
 	'copy',
 	'php:dist',
 	'delta'
-	]);
+]);
 grunt.registerTask('prod', [
 	'eslint',
 	'concurrent:transform',
@@ -261,8 +266,8 @@ grunt.registerTask('prod', [
 	'concat',
 	'concurrent:optim',
 	'concurrent:minify',
-	'copy',
+	'copy:main',
 	'clean'
-	]);
+]);
 
 };
