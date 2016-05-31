@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 		browserify: {
 			dist: {
 				options: {
-					transform: [["babelify"]]
+					transform: [["babelify", { "presets": ["es2015"] }]]
 				},
 				files: {
 					"<%= buildAssets %>/js/main-babelified.js": "<%= srcAssets %>/js/main.js"

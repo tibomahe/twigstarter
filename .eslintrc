@@ -8,6 +8,12 @@
 	"globals": {
 	},
 	"extends": "eslint:recommended",
+	"parserOptions": {
+		"sourceType": "module",
+        "ecmaFeatures": {
+            "modules": true,
+        }
+    },
 	"rules": {
 		"comma-dangle": [2, "always-multiline"],
 		"no-unexpected-multiline": 2,
