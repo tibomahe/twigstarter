@@ -183,7 +183,7 @@ module.exports = function(grunt) {
 			},
 			gruntfile: {
 				files: 'Gruntfile.js',
-				tasks: [ 'eslint', 'browserify', 'concat', 'clean', 'sass', 'postcss', 'csso' ],
+				tasks: [ 'eslint', 'browserify', 'concat', 'uglify', 'clean', 'sass', 'postcss', 'csso' ],
 				options: {
 					livereload: false
 				}
@@ -194,7 +194,7 @@ module.exports = function(grunt) {
 			},
 			script: {
 				files: '<%= srcAssets %>/js/main.js',
-				tasks: ['eslint', 'browserify', 'concat', 'clean']
+				tasks: ['eslint', 'browserify', 'concat', 'uglify', 'clean']
 			},
 			html: {
 				files: ['*.twig', '*/*.twig', '*/*/*.twig'],
