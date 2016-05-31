@@ -44,7 +44,7 @@ module.exports = function(grunt) {
 			},
 			ieSupport: {
 				src: ['<%= vendorsPath %>/html5shiv/dist/html5shiv.js',
-				'<%= vendorsPath %>/respond/dest/respond.js'],
+				'<%= vendorsPath %>/respond/dest/respond.src.js'],
 				dest: '<%= buildAssets %>/js/<%= pkg.name %>-<%= pkg.version %>-ie-support.js',
 				nonull: true,
 			}
