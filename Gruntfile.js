@@ -39,12 +39,14 @@ module.exports = function(grunt) {
 				src: ['<%= vendorsPath %>/jquery/dist/jquery.js',
 				'<%= vendorsPath %>/bootstrap-sass/assets/javascripts/bootstrap.js',
 				'<%= buildAssets %>/js/main-babelified.js'],
-				dest: '<%= buildAssets %>/js/<%= pkg.name %>-<%= pkg.version %>.js'
+				dest: '<%= buildAssets %>/js/<%= pkg.name %>-<%= pkg.version %>.js',
+				nonull: true,
 			},
 			ieSupport: {
 				src: ['<%= vendorsPath %>/html5shiv/dist/html5shiv.js',
 				'<%= vendorsPath %>/respond/dest/respond.js'],
-				dest: '<%= buildAssets %>/js/<%= pkg.name %>-<%= pkg.version %>-ie-support.js'
+				dest: '<%= buildAssets %>/js/<%= pkg.name %>-<%= pkg.version %>-ie-support.js',
+				nonull: true,
 			}
 		},
 
