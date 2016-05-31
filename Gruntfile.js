@@ -103,7 +103,7 @@ module.exports = function(grunt) {
 					report: 'min'
 				},
 				files: {
-					'<%= buildAssets %>/css/main.min.css': '<%= buildAssets %>/css/main.css',
+					'<%= buildAssets %>/css/<%= pkg.name %>-<%= pkg.version %>.min.css': '<%= buildAssets %>/css/main.css',
 					'<%= srcAssets %>/criticalcss/critical-home.min.css': '<%= srcAssets %>/criticalcss/critical-home.css'
 				}
 			}
