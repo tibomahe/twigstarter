@@ -176,11 +176,11 @@ module.exports = function(grunt) {
 				}
 			},
 			sass: {
-				files: '<%= srcAssets %>/scss/main.scss',
+				files: '<%= srcAssets %>/scss/*.scss',
 				tasks: ['sass', 'postcss', 'csso', 'clean','csscount'],
 			},
 			script: {
-				files: '<%= srcAssets %>/js/main.js',
+				files: '<%= srcAssets %>/js/*.js',
 				tasks: ['eslint', 'browserify', 'concat', 'uglify', 'clean']
 			},
 			html: {
