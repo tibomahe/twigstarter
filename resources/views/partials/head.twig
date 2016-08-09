@@ -25,9 +25,13 @@
 	<meta name="twitter:creator" content="">
 	<meta name="twitter:image:src" content="">
 
+	{% if context == 'styleguide' %}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism.css">
+	{% endif %}
+
 	{% if context == 'home' %}
 	<style>
-		/* Insert critical css here (see css/critical/..) */
+		{# {% include 'partials.critical-home' %} #}
 	</style>
 
 	<script>

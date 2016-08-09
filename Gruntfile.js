@@ -8,6 +8,7 @@ module.exports = function(grunt) {
 
 		vendorsPath : './vendor/assets',
 		srcAssets : './resources/assets',
+		srcPartials : './resources/views/partials',
 		buildAssets : './public/assets',
 		pkg: grunt.file.readJSON('package.json'),
 
@@ -17,7 +18,7 @@ module.exports = function(grunt) {
 			options: {
 				useEslintrc: true,
 			},
-			target: ['<%= srcAssets %>/js/main.js']
+			target: ['<%= srcAssets %>/js/*.js']
 		},
 
 		browserify: {
@@ -104,7 +105,8 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'<%= buildAssets %>/css/<%= pkg.name %>-<%= pkg.version %>.min.css': '<%= buildAssets %>/css/main.css',
-					'<%= srcAssets %>/criticalcss/critical-home.min.css': '<%= srcAssets %>/criticalcss/critical-home.css'
+					//export to partials in twig so it can be included
+					'<%= srcPartials %>/critical-home.twig': '<%= srcAssets %>/criticalcss/critical-home.css'
 				}
 			}
 		},
@@ -127,7 +129,7 @@ module.exports = function(grunt) {
 				options:  {
 					outputfile : '<%= srcAssets %>/criticalcss/critical-home.css',
 					filename : '<%= buildAssets %>/css/main.css',
-					url : 'http://localhost:9001',
+					url : 'http://localhost:8080',
 					width: 1200,
 					height: 900
 				}
@@ -161,21 +163,6 @@ module.exports = function(grunt) {
 		},
 
 		//Tasks for livereload
-
-		// connect: {
-		// 	localhost: {
-		// 		options: {
-		// 			port: 9001,
-		// 			open: {
-		// 				target: 'http://localhost:9001/'
-		// 			},
-		// 			keepalive: false,
-		// 			base: [''],
-		// 			livereload: false,
-		// 			hostname: 'localhost',
-		// 		}
-		// 	}
-		// },
 
 		delta: {
 			options: {
@@ -245,7 +232,7 @@ module.exports = function(grunt) {
 	});
 
 grunt.registerTask('images', ['imagemin', 'copy:images']);
-grunt.registerTask('critical', ['criticalcss']);
+grunt.registerTask('critical', ['criticalcss', 'csso', 'clean']);
 grunt.registerTask('stats', ['csscount']);
 grunt.renameTask( 'watch', 'delta' );
 grunt.registerTask('default', [
